@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-rest-api",
+  "version": "1.0.0",
+  "description": "Nodejs REST API",
+  "main": "server.js",
+  "scripts": {
+    "test": " nyc mocha --recursive --exit",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LarisPopa/Nodejs-Rest-API.git"
+  },
+  "author": "Laris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LarisPopa/Nodejs-Rest-API/issues"
+  },
+  "homepage": "https://github.com/LarisPopa/Nodejs-Rest-API#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.17.1",
+    "mocha": "^6.2.1",
+    "mongoose": "^5.7.3",
+    "nodemon": "^1.19.3",
+    "nyc": "^14.1.1"
+  }
+}
