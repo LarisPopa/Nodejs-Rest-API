@@ -14,14 +14,14 @@ mongoose.connect('mongodb://laris:laris23@ds121295.mlab.com:21295/lrs', { useNew
     .catch(err => console.log(err))
 
 //Get user info by id
-app.get('/getUser/:id',(req, res)=>{
+app.get('/user/:id',(req, res)=>{
     User.findById({_id: req.params.id})
         .then(user => res.json(user))
         .catch(err=>console.log(err))
 })
 
 //add new user
-app.post('/addUser',(req, res)=>{
+app.post('/user',(req, res)=>{
     const newUser = User({
         name: req.body.name,
         age: req.body.age,
@@ -49,14 +49,14 @@ app.post('/addUser',(req, res)=>{
 })
 
 //delete user by id
-app.delete('/deleteUser/:id', (req, res)=>{
+app.delete('/user/:id', (req, res)=>{
     User.findById(req.params.id)
         .then(user=> user.remove().then(()=>res.json({succes: true})))
         .catch(()=>res.json({succes: false}))
     
 })
 //update user details by id
-app.put('/updateUser/:id',(req, res)=>{
+app.put('/user/:id',(req, res)=>{
     const newUser = User({
         name: req.body.name,
         age: req.body.age,
