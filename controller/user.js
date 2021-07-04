@@ -169,6 +169,7 @@ const generateAccessToken = async (req, res) => {
   }
 };
 
+//LOGOUT
 const logOut = async (req, res) => {
   //delete the refresh token saved in database
   try {
@@ -179,6 +180,30 @@ const logOut = async (req, res) => {
     return res.status(500).json({ msg: "Server Error" });
   }
 };
+
+//DELETE USER
+const deleteUser = (req, res) =>{
+  try {
+    const { userId } = req.body;
+    await User.findOneAndDelete({ _id: userId });
+    return res.status(200).json({ msg: "User deleted!" });
+  } catch (err) {
+    return res.status(500).json({ msg: "Server Error" });
+  }
+
+}
+
+//GET USER
+const getUser = (req, res) =>{
+  try {
+    const { userId } = req.body;
+    const user = await User.findOne({ _id: userId });
+    return res.status(200).json({ user });
+  } catch (err) {
+    return res.status(500).json({ msg: "Server Error" });
+  }
+
+}
 
 //GET ALL USERS
 const getUsers = async (req, res) => {
@@ -198,5 +223,7 @@ module.exports = {
   resetPassword,
   generateAccessToken,
   logOut,
+  deleteUser,
+  getUser,
   getUsers
 };
